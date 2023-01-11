@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
+const { flavourSchema } = require('./flavour');
 const { foodSchema } = require('./food');
-const { userSchema } = require('./user');
 
 const orderItemSchema = new Schema({
   food: {
@@ -11,12 +11,16 @@ const orderItemSchema = new Schema({
     type: Number,
     required: true,
     default: 1
+  },
+  selectedFlavour: {
+    type: flavourSchema,
+    required: true
   }
 })
 
 const orderSchema = new Schema({
-  user: {
-    type: userSchema,
+  userId: {
+    type: String,
     required: true
   },
   room: {

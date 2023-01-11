@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const flavourSchema = new Schema({
   name: {
-    name: String,
+    type: String,
     required: true
   }
 });

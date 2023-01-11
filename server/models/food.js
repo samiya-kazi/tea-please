@@ -6,8 +6,8 @@ const foodSchema = new Schema ({
     type: String,
     required: true
   },
-  flavour : {
-    type: flavourSchema,
+  flavours : {
+    type: [flavourSchema],
     required: true
   },
   size: {
