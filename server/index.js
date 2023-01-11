@@ -1,12 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const router = require('./router');
 require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 const uri = process.env.MONGOOSE_URI;
 
 const app = express();
 app.use(cors());
+app.use(express.json());
+app.use(router);
 
 
 (async function bootstrap () {
