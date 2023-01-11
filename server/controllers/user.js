@@ -1,5 +1,8 @@
 const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
 const User = require('../models/user');
+require('dotenv').config();
+const SECRET = process.env.JWT_SECRET;
 
 async function login (req, res) {
   try {
@@ -12,6 +15,9 @@ async function login (req, res) {
       if(checkUser.length === 1) {
         const user = checkUser[0];
         if (bcrypt.compareSync(password, user.password)) {
+          const token = jwt.sign({ id: user._id}, SECRET);
+          res.setHeader("Authorization", "Bearer " + token);
+
           delete user.password;
           res.status(200).send(user);
         } else {
@@ -42,6 +48,10 @@ async function register (req, res) {
         const pass = bcrypt.hashSync(password, salt);
         
         const result = await User.create({ firstName, lastName, email, password: pass, designation });
+
+        const token = jwt.sign({ id: result._id}, SECRET);
+        
+        res.setHeader("Authorization", "Bearer " + token);
         res.status(201).send(result);
       }
     }

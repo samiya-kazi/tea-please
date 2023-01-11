@@ -2,15 +2,16 @@ const router = require('express').Router();
 const orderController = require('./controllers/order');
 const foodController = require('./controllers/food');
 const userController = require('./controllers/user');
+const authMiddleware = require('./middlewares/auth');
 
 // Order routes
-router.get('/order', orderController.getAllOrders);
-router.post('/order', orderController.postOrder)
-router.put('/order/:id/:status', orderController.changeOrderStatus);
+router.get('/order', authMiddleware, orderController.getAllOrders);
+router.post('/order', authMiddleware, orderController.postOrder)
+router.put('/order/:id/:status', authMiddleware, orderController.changeOrderStatus);
 
 // Food routes
-router.get('/food', foodController.getAllFood);
-router.post('/food', foodController.postFood);
+router.get('/food', authMiddleware, foodController.getAllFood);
+router.post('/food', authMiddleware, foodController.postFood);
 
 
 // User routes
