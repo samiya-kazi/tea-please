@@ -17,5 +17,6 @@ router.post('/food', authMiddleware, foodController.postFood);
 // User routes
 router.post('/login', userController.login);
 router.post('/register', userController.register);
+router.post('/admin/register', userController.registerAdmin);
 
 module.exports = router;

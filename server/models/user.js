@@ -20,6 +20,11 @@ const userSchema = new Schema({
   designation: {
     type: String,
     required: true
+  },
+  isAdmin: {
+    type: Boolean,
+    required: true,
+    default: false
   }
 });
 
