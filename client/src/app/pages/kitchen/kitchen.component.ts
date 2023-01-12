@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Order } from 'src/app/interfaces/order';
+import { ApiClientService } from 'src/app/services/api-client.service';
 
 @Component({
   selector: 'app-kitchen',
@@ -8,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class KitchenComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  orders: Order[] = [];
+
+  constructor(private route: Router, private api: ApiClientService) { }
 
   ngOnInit(): void {
     const userStr = localStorage.getItem('user');
@@ -20,6 +24,12 @@ export class KitchenComponent implements OnInit {
         this.route.navigate(['home']);
       }
     }
+
+    this.getAllOrders();
+  }
+
+  getAllOrders () {
+    this.api.getAllOrders().subscribe(orders => this.orders = orders);
   }
 
 }

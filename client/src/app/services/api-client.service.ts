@@ -1,6 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Order } from '../interfaces/order';
 import { User } from '../interfaces/user';
 
 @Injectable({
@@ -18,5 +19,9 @@ export class ApiClientService {
 
   register (firstName: string, lastName: string, designation: string, email: string, password: string) {
     return this.http.post<User>(this.rootUrl + '/register', { firstName, lastName, designation, email, password }, { observe: 'response' });
+  }
+
+  getAllOrders () : Observable<Order[]> {
+    return this.http.get<Order[]>(this.rootUrl + '/order');
   }
 }
