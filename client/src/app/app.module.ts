@@ -12,6 +12,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ApiInceptorService } from './services/api-inceptor.service';
 import { OrderCardComponent } from './components/order-card/order-card.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { OrderCardComponent } from './components/order-card/order-card.component
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    DragDropModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInceptorService, multi: true }

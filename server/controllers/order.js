@@ -32,7 +32,7 @@ async function postOrder (req, res) {
 async function changeOrderStatus (req, res) {
   try {
     const { id, status } = req.params;
-    const result = Order.findByIdAndUpdate(id, {$set: { status: status }});
+    const result = await Order.findByIdAndUpdate(id, {$set: { status: status }});
     res.status(200).send(result)
   } catch (error) {
     res.status(500);

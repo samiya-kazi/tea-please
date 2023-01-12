@@ -28,4 +28,8 @@ export class ApiClientService {
   getUserInfo (id: string) : Observable<User> {
     return this.http.get<User>(this.rootUrl + `/user/${id}`);
   }
+
+  changeOrderStatus (id: string, status: string) : Observable<Order> {
+    return this.http.put<Order>(this.rootUrl + `/order/${id}/${status}`, {});
+  }
 }
