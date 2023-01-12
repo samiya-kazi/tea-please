@@ -18,6 +18,6 @@ router.post('/food', authMiddleware, foodController.postFood);
 router.post('/login', userController.login);
 router.post('/register', userController.register);
 router.post('/admin/register', userController.registerAdmin);
-router.get('/user/:id', userController.getUserInfo);
+router.get('/user/:id', authMiddleware, userController.getUserInfo);
 
 module.exports = router;
