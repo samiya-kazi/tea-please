@@ -7,11 +7,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { KitchenComponent } from './pages/kitchen/kitchen.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,16 +17,14 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     LoginComponent,
     RegistrationComponent,
     KitchenComponent,
-    NavBarComponent
+    NavBarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatSlideToggleModule,
-    MatFormFieldModule,
-    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
