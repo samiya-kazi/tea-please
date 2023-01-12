@@ -24,4 +24,8 @@ export class ApiClientService {
   getAllOrders () : Observable<Order[]> {
     return this.http.get<Order[]>(this.rootUrl + '/order');
   }
+
+  getUserInfo (id: string) : Observable<User> {
+    return this.http.get<User>(this.rootUrl + `/user/${id}`);
+  }
 }

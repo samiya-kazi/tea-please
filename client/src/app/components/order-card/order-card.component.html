@@ -1,0 +1,7 @@
+<div>
+  <p *ngIf="user">Order for: {{user.firstName}} {{user.lastName}}</p>
+  <p>Room: {{order.room}}</p>
+  <ul>
+    <li *ngFor="let item of order.items">{{item.food.name}}({{item.selectedFlavour.name}}) - {{item.quantity}}</li>
+  </ul>
+</div>

@@ -11,6 +11,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ApiInceptorService } from './services/api-inceptor.service';
+import { OrderCardComponent } from './components/order-card/order-card.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ApiInceptorService } from './services/api-inceptor.service';
     RegistrationComponent,
     KitchenComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    OrderCardComponent
   ],
   imports: [
     BrowserModule,

@@ -94,4 +94,17 @@ async function registerAdmin (req, res) {
 }
 
 
-module.exports = { register, registerAdmin, login };
+async function getUserInfo (req, res) {
+  try {
+    const { id } = req.params;
+    const proj = {_id: 1, firstName: 1, lastName: 1, email: 1, designation: 1, isAdmin: 1};
+    const user = await User.findById(id, proj);
+    res.status(200).send(user);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
+
+module.exports = { register, registerAdmin, login, getUserInfo };

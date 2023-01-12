@@ -1,4 +1,4 @@
-<p>kitchen works!</p>
 <div *ngFor="let order of orders">
-  {{order | json}}
+  <app-order-card [order]="order"></app-order-card>
+
 </div>
