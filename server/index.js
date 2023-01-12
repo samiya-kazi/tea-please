@@ -6,8 +6,14 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 const uri = process.env.MONGOOSE_URI;
 
+const corsConfig = {
+  origin: "http://localhost:4200",
+  exposedHeaders: ['Authorization'],
+  credentials: true
+}
+
 const app = express();
-app.use(cors());
+app.use(cors(corsConfig));
 app.use(express.json());
 app.use(router);
 
