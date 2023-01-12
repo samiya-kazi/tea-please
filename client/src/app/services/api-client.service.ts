@@ -15,4 +15,8 @@ export class ApiClientService {
   login (email: string, password: string) : Observable<HttpResponse<User>> {
     return this.http.post<User>(this.rootUrl + '/login', { email, password }, { observe: 'response' });
   }
+
+  register (firstName: string, lastName: string, designation: string, email: string, password: string) {
+    return this.http.post<User>(this.rootUrl + '/register', { firstName, lastName, designation, email, password }, { observe: 'response' });
+  }
 }

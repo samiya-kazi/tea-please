@@ -1,1 +1,38 @@
-<p>registration works!</p>
+<form [formGroup]="registerForm" (submit)="handleSubmit()">
+  <h2>Register</h2>
+  <div>
+    <label for="firstName">First Name: </label>
+    <input name="firstName" formControlName="firstName"/>
+  </div>
+
+  <div>
+    <label for="lastName">Last Name: </label>
+    <input name="lastName" formControlName="lastName"/>
+  </div>
+
+  <div>
+    <label for="email">Email: </label>
+    <input name="email" formControlName="email"/>
+  </div>
+
+  <div>
+    <label for="designation-select">Designation: </label> 
+    <select
+      name="designation-select"
+      class="custom-select"
+      formControlName="designation"
+      >
+      <option value="intern">Intern</option>
+      <option value="executive">Executive</option>
+      <option value="director">Director</option>
+    </select>
+  </div>
+  
+  <div>
+    <label type="password" for="password">Password: </label>
+    <input name="password" formControlName="password"/>
+  </div>
+  
+  <button>Register</button>
+  <div class="error-message">{{errorMessage}}</div>
+</form>
