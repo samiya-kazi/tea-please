@@ -25,16 +25,17 @@ export class LoginComponent implements OnInit {
   handleSubmit() {
     const { email, password } = this.loginForm.value;
     if (email && password) {
-      this.api.login(email, password).subscribe(res => {
-        if(res.status === 200 && res.body) {
-          localStorage.setItem('accessToken', JSON.stringify(res.headers.get('Authorization')));
-          localStorage.setItem('user', JSON.stringify(res.body));
-          this.loginForm.reset();
-        }
-      },
-      error => {
+      this.api.login(email, password).subscribe({
+        next: (res) => {
+          if(res.status === 200 && res.body) {
+            localStorage.setItem('accessToken', JSON.stringify(res.headers.get('Authorization')));
+            localStorage.setItem('user', JSON.stringify(res.body));
+            this.loginForm.reset();
+          }
+        },
+      error: error => {
         this.errorMessage = error.error;
-      })
+      }})
     }
   }
 
