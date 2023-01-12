@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-kitchen',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KitchenComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
+    const userStr = localStorage.getItem('user');
+    if (!userStr) {
+      this.route.navigate(['login']);
+    } else {
+      const user = JSON.parse(userStr);
+      if (!user.isAdmin) {
+        this.route.navigate(['home']);
+      }
+    }
   }
 
 }

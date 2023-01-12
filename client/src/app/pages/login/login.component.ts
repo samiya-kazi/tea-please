@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiClientService } from 'src/app/services/api-client.service';
 
 @Component({
@@ -17,7 +18,11 @@ export class LoginComponent implements OnInit {
   hide = true;
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private api: ApiClientService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private api: ApiClientService,
+    private route: Router
+    ) { }
 
   ngOnInit(): void {
   }
@@ -31,6 +36,11 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('accessToken', JSON.stringify(res.headers.get('Authorization')));
             localStorage.setItem('user', JSON.stringify(res.body));
             this.loginForm.reset();
+            if(res.body.isAdmin) {
+              this.route.navigate(['kitchen'])
+            } else {
+              this.route.navigate(['home'])
+            }
           }
         },
       error: error => {
