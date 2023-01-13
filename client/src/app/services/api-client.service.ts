@@ -2,7 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Food } from '../interfaces/food';
-import { Order } from '../interfaces/order';
+import { Order, OrderItem } from '../interfaces/order';
 import { User } from '../interfaces/user';
 
 @Injectable({
@@ -36,5 +36,9 @@ export class ApiClientService {
 
   getAllFood () : Observable<Food[]> {
     return this.http.get<Food[]>(this.rootUrl + `/food`);
+  }
+
+  postOrder (userId: string, room: string, items: OrderItem[]) : Observable<Order> {
+    return this.http.post<Order>(this.rootUrl + '/order', {userId, room, items});
   }
 }
