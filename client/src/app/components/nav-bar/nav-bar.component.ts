@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
+import { faMugHot } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,6 +9,8 @@ import { User } from 'src/app/interfaces/user';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+
+  faMugHot = faMugHot;
 
   constructor(private route: Router) { }
 
@@ -20,6 +23,7 @@ export class NavBarComponent implements OnInit {
 
     this.route.events.subscribe(e => {
       this.checkAuthStatus();
+      this.showMenu = false;
     });
   }
 

@@ -1,17 +1,18 @@
 <div class="nav-bar">
-  <div>
+  <div class="brand">
+    <fa-icon [icon]="faMugHot" class="brand-icon"></fa-icon>
     <h2>Tea, Please!</h2>
   </div>
   <div *ngIf="loggedIn" class="user-container">
     <p>Hello, {{user?.firstName}}!</p>
 
     <div>
-      <button (click)="toggleMenu()" class="example-standalone-trigger">Settings</button>
-      <div *ngIf="showMenu" class="example-menu">
-        <button *ngIf="!user?.isAdmin" routerLink="/order" class="example-menu-item">Add Item</button>
-        <button *ngIf="!user?.isAdmin" routerLink="/order/cart" class="example-menu-item">Cart</button>
-        <button *ngIf="!user?.isAdmin" routerLink="/order/log" class="example-menu-item">Order Log</button>
-        <button class="example-menu-item" (click)="logout()">Logout</button>
+      <div (click)="toggleMenu()" class="standalone-trigger" [class.menu-open]="showMenu">Settings</div>
+      <div *ngIf="showMenu" class="menu">
+        <button *ngIf="!user?.isAdmin" routerLink="/order" class="menu-item">Add Item</button>
+        <button *ngIf="!user?.isAdmin" routerLink="/order/cart" class="menu-item">Cart</button>
+        <button *ngIf="!user?.isAdmin" routerLink="/order/log" class="menu-item">Order Log</button>
+        <button class="menu-item" (click)="logout()">Logout</button>
       </div>
     </div>
 
