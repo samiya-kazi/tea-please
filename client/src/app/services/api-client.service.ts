@@ -41,4 +41,8 @@ export class ApiClientService {
   postOrder (userId: string, room: string, items: OrderItem[]) : Observable<Order> {
     return this.http.post<Order>(this.rootUrl + '/order', {userId, room, items});
   }
+
+  getOwnOrders () : Observable<Order[]> {
+    return this.http.get<Order[]>(this.rootUrl + '/user/orders');
+  }
 }

@@ -1,1 +1,12 @@
-<p>order-list works!</p>
+<div>
+  <div *ngFor="let order of orderList">
+    <p>Room: {{order.room}}</p>
+    <div>
+      <p>Items: </p>
+      <ul>
+        <li *ngFor="let item of order.items">{{item.quantity}} * {{item.food.name}} ({{item.selectedFlavour.name}})</li>
+      </ul>
+    </div>
+    <p>Status: {{order.status}}</p>
+  </div>
+</div>

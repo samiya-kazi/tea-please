@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/app/interfaces/order';
+import { ApiClientService } from 'src/app/services/api-client.service';
 
 @Component({
   selector: 'app-order-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderListComponent implements OnInit {
 
-  constructor() { }
+  orderList : Order[] = [];
+
+  constructor(private api: ApiClientService) { }
 
   ngOnInit(): void {
+    this.getOrders();
   }
 
+  getOrders () {
+    this.api.getOwnOrders().subscribe(orders => this.orderList = orders);
+  }
 }
