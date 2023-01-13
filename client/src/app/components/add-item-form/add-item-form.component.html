@@ -1,0 +1,31 @@
+<form [formGroup]="addItemForm" (submit)="handleSubmit()">
+  <div>
+    <label for="food-select">Food: </label> 
+    <select
+      name="food-select"
+      class="custom-select"
+      formControlName="foodId"
+      >
+      <option *ngFor="let item of food" value={{item._id}}>{{item.name}}</option>
+    </select>
+  </div>
+  <div>
+    <label for="flavour-select">Flavour: </label> 
+    <select
+      name="flavour-select"
+      class="custom-select"
+      formControlName="selectedFlavourId"
+      >
+      <option *ngFor="let item of flavours" value={{item._id}}>{{item.name}}</option>
+    </select>
+  </div>
+  <div>
+    <label>Quantity: </label>
+    <input type="number" min="1" [defaultValue]="1"/>
+  </div>
+  <div *ngIf="selectedFood">
+    <p>Per serving size: {{selectedFood.size}}</p>
+  </div>
+
+  <button>Add</button>
+</form>

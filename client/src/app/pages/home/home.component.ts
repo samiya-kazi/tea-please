@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Food } from 'src/app/interfaces/food';
+import { OrderItem } from 'src/app/interfaces/order';
+import { ApiClientService } from 'src/app/services/api-client.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  addItems : OrderItem[] = [];
 
   constructor(private route: Router) { }
 

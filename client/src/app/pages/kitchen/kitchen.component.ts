@@ -28,7 +28,7 @@ export class KitchenComponent implements OnInit {
     } else {
       const user = JSON.parse(userStr);
       if (!user.isAdmin) {
-        this.route.navigate(['home']);
+        this.route.navigate(['order']);
       }
     }
 

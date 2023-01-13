@@ -42,7 +42,7 @@ export class RegistrationComponent implements OnInit {
             if(res.body.isAdmin) {
               this.route.navigate(['kitchen'])
             } else {
-              this.route.navigate(['home'])
+              this.route.navigate(['order'])
             }
           }
         },

@@ -13,6 +13,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { ApiInceptorService } from './services/api-inceptor.service';
 import { OrderCardComponent } from './components/order-card/order-card.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { AddItemFormComponent } from './components/add-item-form/add-item-form.component';
+import { ConfirmOrderFormComponent } from './components/confirm-order-form/confirm-order-form.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     KitchenComponent,
     NavBarComponent,
     HomeComponent,
-    OrderCardComponent
+    OrderCardComponent,
+    AddItemFormComponent,
+    ConfirmOrderFormComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,

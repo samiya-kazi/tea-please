@@ -1,6 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Food } from '../interfaces/food';
 import { Order } from '../interfaces/order';
 import { User } from '../interfaces/user';
 
@@ -31,5 +32,9 @@ export class ApiClientService {
 
   changeOrderStatus (id: string, status: string) : Observable<Order> {
     return this.http.put<Order>(this.rootUrl + `/order/${id}/${status}`, {});
+  }
+
+  getAllFood () : Observable<Food[]> {
+    return this.http.get<Food[]>(this.rootUrl + `/food`);
   }
 }

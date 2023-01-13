@@ -10,7 +10,7 @@ export interface Order {
   date: Date
 }
 
-interface OrderItem {
+export interface OrderItem {
   _id: string,
   food: Food,
   quantity: Number,
