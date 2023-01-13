@@ -5,6 +5,9 @@
   <div *ngIf="loggedIn" class="user-container">
     <p>Hello, {{user?.firstName}}!</p>
     <div *ngIf="!user?.isAdmin">
+      <button routerLink="/order">Add Item</button>
+    </div>
+    <div *ngIf="!user?.isAdmin">
       <button routerLink="/order/cart">Cart</button>
     </div>
     <div *ngIf="!user?.isAdmin">

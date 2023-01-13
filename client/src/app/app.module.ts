@@ -12,7 +12,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ApiInceptorService } from './services/api-inceptor.service';
 import { OrderCardComponent } from './components/order-card/order-card.component';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AddItemFormComponent } from './components/add-item-form/add-item-form.component';
 import { ConfirmOrderFormComponent } from './components/confirm-order-form/confirm-order-form.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
