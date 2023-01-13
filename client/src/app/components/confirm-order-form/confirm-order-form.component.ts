@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Order, OrderItem } from 'src/app/interfaces/order';
 import { User } from 'src/app/interfaces/user';
 import { ApiClientService } from 'src/app/services/api-client.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-confirm-order-form',
@@ -19,7 +20,11 @@ export class ConfirmOrderFormComponent implements OnInit {
     room: ''
   })
 
-  constructor(private fb: FormBuilder, private api: ApiClientService, private route: Router) { }
+  constructor(private fb: FormBuilder,
+     private api: ApiClientService, 
+     private route: Router,
+     private notification: NotificationService
+     ) { }
 
   ngOnInit(): void {
     this.checkAuthStatus();
@@ -45,7 +50,11 @@ export class ConfirmOrderFormComponent implements OnInit {
         next: () => {
           localStorage.setItem('cart', JSON.stringify([]));
           this.route.navigate(['']);
+          this.notification.showSuccess('You order has been placed.', "Success");
         },
+        error: error =>{
+          this.notification.showError(error.error ,'Post Error')
+        }
       });
     }
   }

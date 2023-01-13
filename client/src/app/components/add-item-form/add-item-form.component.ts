@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { Flavour } from 'src/app/interfaces/flavour';
 import { Food } from 'src/app/interfaces/food';
 import { ApiClientService } from 'src/app/services/api-client.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-add-item-form',
@@ -22,7 +23,7 @@ export class AddItemFormComponent implements OnInit {
     quantity: 1
   })
 
-  constructor(private api: ApiClientService, private fb: FormBuilder) { }
+  constructor(private api: ApiClientService, private fb: FormBuilder, private notification: NotificationService) { }
 
   ngOnInit(): void {
     this.getFood();
@@ -60,6 +61,7 @@ export class AddItemFormComponent implements OnInit {
 
     this.addItemForm.reset();
     this.addItemForm.setValue({foodId: '', selectedFlavourId: '', quantity: 1});
+    this.notification.showSuccess('Item added to cart.', 'Tea, Please!');
   }
 
 }

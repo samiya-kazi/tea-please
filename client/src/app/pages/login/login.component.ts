@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiClientService } from 'src/app/services/api-client.service';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -20,12 +21,12 @@ export class LoginComponent implements OnInit {
   })
 
   hide = true;
-  errorMessage = '';
 
   constructor(
     private fb: FormBuilder, 
     private api: ApiClientService,
-    private route: Router
+    private route: Router,
+    private notification: NotificationService
     ) { }
 
   ngOnInit(): void {
@@ -48,7 +49,7 @@ export class LoginComponent implements OnInit {
           }
         },
       error: error => {
-        this.errorMessage = error.error;
+        this.notification.showError(error.error, 'Login Error');
       }})
     }
   }

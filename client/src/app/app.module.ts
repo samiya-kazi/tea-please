@@ -19,6 +19,8 @@ import { OrderListComponent } from './components/order-list/order-list.component
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { MatCardModule } from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     DragDropModule,
     CdkMenuModule,
     MatCardModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInceptorService, multi: true }

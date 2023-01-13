@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Order } from 'src/app/interfaces/order';
 import { ApiClientService } from 'src/app/services/api-client.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-kitchen',
@@ -15,11 +16,7 @@ export class KitchenComponent implements OnInit {
   inProgress: Order[] = [];
   completed: Order[] = [];
 
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-
-  constructor(private route: Router, private api: ApiClientService) { }
+  constructor(private route: Router, private api: ApiClientService, private notification: NotificationService) { }
 
   ngOnInit(): void {
     const userStr = localStorage.getItem('user');
@@ -55,7 +52,7 @@ export class KitchenComponent implements OnInit {
         event.currentIndex,
       );
 
-      let newStatus;
+      let newStatus: string;
 
       switch (event.container.id) {
         case 'cdk-drop-list-0': 
@@ -71,8 +68,13 @@ export class KitchenComponent implements OnInit {
           newStatus = 'created';
       }
 
-      this.api.changeOrderStatus(event.container.data[0]._id, newStatus).subscribe(order => {
-        console.log(order);
+      this.api.changeOrderStatus(event.container.data[0]._id, newStatus).subscribe({
+        next: () => {
+          this.notification.showSuccess(`Status changed to: ${newStatus}`, 'Order Status Changed Successful');
+        },
+        error: error => {
+          this.notification.showError(error.error, 'Status Change Error');
+        }
       })
     }
   }
