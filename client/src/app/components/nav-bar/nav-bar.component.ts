@@ -13,6 +13,7 @@ export class NavBarComponent implements OnInit {
 
   loggedIn: boolean = false;
   user?: User;
+  showMenu: boolean = false;
 
   ngOnInit(): void {
     this.checkAuthStatus();
@@ -31,6 +32,10 @@ export class NavBarComponent implements OnInit {
   logout () {
     localStorage.clear();
     this.route.navigate(['login']);
+  }
+
+  toggleMenu () {
+    this.showMenu = !this.showMenu;
   }
 
 }

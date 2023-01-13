@@ -4,17 +4,16 @@
   </div>
   <div *ngIf="loggedIn" class="user-container">
     <p>Hello, {{user?.firstName}}!</p>
-    <div *ngIf="!user?.isAdmin">
-      <button routerLink="/order">Add Item</button>
-    </div>
-    <div *ngIf="!user?.isAdmin">
-      <button routerLink="/order/cart">Cart</button>
-    </div>
-    <div *ngIf="!user?.isAdmin">
-      <button routerLink="/order/log">Order Logs</button>
-    </div>
+
     <div>
-      <button (click)="logout()">Logout</button>
+      <button (click)="toggleMenu()" class="example-standalone-trigger">Settings</button>
+      <div *ngIf="showMenu" class="example-menu">
+        <button *ngIf="!user?.isAdmin" routerLink="/order" class="example-menu-item">Add Item</button>
+        <button *ngIf="!user?.isAdmin" routerLink="/order/cart" class="example-menu-item">Cart</button>
+        <button *ngIf="!user?.isAdmin" routerLink="/order/log" class="example-menu-item">Order Log</button>
+        <button class="example-menu-item" (click)="logout()">Logout</button>
+      </div>
     </div>
+
   </div>
 </div>

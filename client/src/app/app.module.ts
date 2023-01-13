@@ -16,6 +16,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AddItemFormComponent } from './components/add-item-form/add-item-form.component';
 import { ConfirmOrderFormComponent } from './components/confirm-order-form/confirm-order-form.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
+import { CdkMenuModule } from '@angular/cdk/menu';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { OrderListComponent } from './components/order-list/order-list.component
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    CdkMenuModule,
+    MatCardModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInceptorService, multi: true }
