@@ -4,6 +4,7 @@ import { Order } from 'src/app/interfaces/order';
 import { ApiClientService } from 'src/app/services/api-client.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { NotificationService } from 'src/app/services/notification.service';
+import { OrderSocketService } from 'src/app/services/order-socket.service';
 
 @Component({
   selector: 'app-kitchen',
@@ -16,7 +17,11 @@ export class KitchenComponent implements OnInit {
   inProgress: Order[] = [];
   completed: Order[] = [];
 
-  constructor(private route: Router, private api: ApiClientService, private notification: NotificationService) { }
+  constructor(private route: Router,
+    private api: ApiClientService,
+    private notification: NotificationService,
+    private orderSocket: OrderSocketService
+    ) { }
 
   ngOnInit(): void {
     const userStr = localStorage.getItem('user');
@@ -30,6 +35,8 @@ export class KitchenComponent implements OnInit {
     }
 
     this.getAllOrders();
+    this.orderSocket.joinRoom();
+    this.orderSocket.getNewOrder().subscribe(res => this.orders = [...this.orders, res]);
   }
 
   getAllOrders () {

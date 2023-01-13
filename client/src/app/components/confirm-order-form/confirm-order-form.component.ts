@@ -5,6 +5,7 @@ import { Order, OrderItem } from 'src/app/interfaces/order';
 import { User } from 'src/app/interfaces/user';
 import { ApiClientService } from 'src/app/services/api-client.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { OrderSocketService } from 'src/app/services/order-socket.service';
 
 @Component({
   selector: 'app-confirm-order-form',
@@ -23,12 +24,14 @@ export class ConfirmOrderFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
      private api: ApiClientService, 
      private route: Router,
-     private notification: NotificationService
+     private notification: NotificationService,
+     private orderSocket: OrderSocketService
      ) { }
 
   ngOnInit(): void {
     this.checkAuthStatus();
     this.parseOrderItems();
+    this.orderSocket.joinRoom();
   }
 
   checkAuthStatus () {
@@ -47,7 +50,8 @@ export class ConfirmOrderFormComponent implements OnInit {
   handleSubmit() {
     if(this.orderItems.length && this.confirmOrderFrom.value.room) {
       this.api.postOrder(this.user._id, this.confirmOrderFrom.value.room, this.orderItems).subscribe({
-        next: () => {
+        next: (res) => {
+          this.orderSocket.sendOrder(res);
           localStorage.setItem('cart', JSON.stringify([]));
           this.route.navigate(['']);
           this.notification.showSuccess('You order has been placed.', "Success");
