@@ -2,6 +2,11 @@
 body {
   margin: 0;
   width: 100vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: 'Roboto';
+  background-color: bisque;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

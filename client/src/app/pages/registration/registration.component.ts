@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiClientService } from 'src/app/services/api-client.service';
+import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-registration',
@@ -9,6 +10,9 @@ import { ApiClientService } from 'src/app/services/api-client.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
 
   registerForm = this.fb.group({
     firstName: '',
@@ -18,6 +22,7 @@ export class RegistrationComponent implements OnInit {
     designation: '',
   })
 
+  hide = true;
   errorMessage: string = ''
 
   constructor(
@@ -51,6 +56,10 @@ export class RegistrationComponent implements OnInit {
         }
       })
     }
+  }
+
+  toggleHide () {
+    this.hide = !this.hide;
   }
 
 }

@@ -1,7 +1,21 @@
-<div>
+<!-- <div>
   <p *ngIf="user">Order for: {{user.firstName}} {{user.lastName}}</p>
   <p>Room: {{order.room}}</p>
   <ul>
     <li *ngFor="let item of order.items">{{item.food.name}}({{item.selectedFlavour.name}}) - {{item.quantity}}</li>
   </ul>
-</div>
+</div> -->
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title-group *ngIf="user">
+      <mat-card-title>Order for: {{user.firstName}} {{user.lastName}}</mat-card-title>
+      <mat-card-subtitle>Room: {{order.room}}</mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    <ul>
+      <li *ngFor="let item of order.items">{{item.food.name}}({{item.selectedFlavour.name}}) - {{item.quantity}}</li>
+    </ul>
+  </mat-card-content>
+</mat-card>

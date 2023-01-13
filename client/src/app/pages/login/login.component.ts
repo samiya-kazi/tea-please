@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiClientService } from 'src/app/services/api-client.service';
+import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,9 @@ import { ApiClientService } from 'src/app/services/api-client.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
 
   loginForm = this.fb.group({
     email: '',
@@ -47,6 +51,10 @@ export class LoginComponent implements OnInit {
         this.errorMessage = error.error;
       }})
     }
+  }
+
+  toggleHide () {
+    this.hide = !this.hide;
   }
 
 }

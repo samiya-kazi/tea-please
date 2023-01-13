@@ -1,15 +1,18 @@
-<form [formGroup]="loginForm" (submit)="handleSubmit()">
-  <h2>Login</h2>
-  <div>
-    <label for="email">Email: </label>
-    <input name="email" formControlName="email"/>
-  </div>
+<div class="container">
+  <form [formGroup]="loginForm" (submit)="handleSubmit()">
+    <h2>Login</h2>
+    <div>
+      <label for="email">Email: </label>
+      <input name="email" formControlName="email"/>
+    </div>
   
-  <div>
-    <label type="password" for="password">Password: </label>
-    <input name="password" formControlName="password"/>
-  </div>
-  
-  <button>Log In</button>
-  <div class="error-message">{{errorMessage}}</div>
-</form>
+    <div>
+      <label for="password">Password: </label>
+      <input [type]="hide ? 'password' : 'text'" name="password" formControlName="password"/>
+      <button class="hide-button" type="button" (click)="toggleHide()"><fa-icon [icon]="hide ? faEyeSlash : faEye"></fa-icon></button>
+    </div>
+    
+    <button>Log In</button>
+    <div class="error-message">{{errorMessage}}</div>
+  </form>
+</div>

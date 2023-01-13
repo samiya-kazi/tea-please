@@ -4,6 +4,8 @@
   display: flex;
   justify-content: space-between;
   overflow-y: visible;
+  background-color: brown;
+  color: white;
 }
 
 .user-container {

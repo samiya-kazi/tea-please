@@ -18,6 +18,7 @@ import { ConfirmOrderFormComponent } from './components/confirm-order-form/confi
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { MatCardModule } from '@angular/material/card';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { MatCardModule } from '@angular/material/card';
     HttpClientModule,
     DragDropModule,
     CdkMenuModule,
-    MatCardModule
+    MatCardModule,
+    FontAwesomeModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInceptorService, multi: true }
