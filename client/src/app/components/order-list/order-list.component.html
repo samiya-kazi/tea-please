@@ -1,12 +1,28 @@
-<div>
-  <div *ngFor="let order of orderList">
-    <p>Room: {{order.room}}</p>
-    <div>
-      <p>Items: </p>
-      <ul>
-        <li *ngFor="let item of order.items">{{item.quantity}} * {{item.food.name}} ({{item.selectedFlavour.name}})</li>
-      </ul>
-    </div>
-    <p>Status: {{order.status}}</p>
+<div class="container">
+  <h1>Order Log</h1>
+  <div *ngIf="orderList.length === 0">
+    <h2>No orders to show.</h2>
+  </div>
+  <div *ngFor="let order of orderList" class="order-list">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-subtitle>Room: {{order.room}}</mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let item of order.items">{{item.food.name}} ({{item.selectedFlavour.name}}) - {{item.quantity}}</li>
+        </ul>
+        <p>Status: 
+          <span [class.created]="order.status === 'created'"
+          [class.in-progress]="order.status === 'in-progress'"
+          [class.completed]="order.status === 'completed'"
+          >
+            {{order.status}}
+          </span>
+        </p>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

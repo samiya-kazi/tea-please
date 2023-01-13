@@ -1,0 +1,29 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.order-list {
+  width: 30%
+}
+
+.example-card {
+  min-width: fit-content;
+  width: 100%;
+  margin: 20px;
+}
+
+.created {
+  color: blue;
+}
+
+.in-progress {
+  color: orange;
+}
+
+.completed {
+  color: darkgreen;
+}
