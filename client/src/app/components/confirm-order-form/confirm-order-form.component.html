@@ -1,27 +1,32 @@
-<button type="button" (click)="goBack()">Back</button>
-<form [formGroup]="confirmOrderFrom" (submit)="handleSubmit()">
-  <div class="user-info">
-    <p>Order for: {{user.firstName}} {{user.lastName}}</p>
-    <p>Email: {{user.email}}</p>
-    <div>
-      <label for="room">Room: </label>
-      <input type="text" name="room" formControlName="room" required="true"/>
+<div class="container">
+  <form [formGroup]="confirmOrderFrom" (submit)="handleSubmit()">
+    <h2>Complete Order</h2>
+    <div class="user-info">
+      <p>Order for: {{user.firstName}} {{user.lastName}}</p>
+      <p>Email: {{user.email}}</p>
+      <div>
+        <label for="room">Room: </label>
+        <input type="text" name="room" formControlName="room" required="true"/>
+      </div>
     </div>
-  </div>
-  <div class="order-items">
-    <h3>Order Items: </h3>
-    <ul>
-      <li *ngFor="let item of orderItems" class="order-item">
-        <div>
-          {{item.food.name}} ({{item.food.size}}) - {{item.quantity}}
-          <br>
-          Flavour: {{item.selectedFlavour.name}}
-        </div>
-        <div>
-          <button type="button" (click)="handleRemoveItem(item)">Remove</button>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <button>Submit</button>
-</form>
+    <div class="order-items">
+      <h3>Order Items: </h3>
+      <ul>
+        <li *ngFor="let item of orderItems">
+          <div class="order-item">
+            <div>
+              {{item.food.name}} ({{item.food.size}}) - {{item.quantity}}
+              <br>
+              Flavour: {{item.selectedFlavour.name}}
+            </div>
+              <button type="button" (click)="handleRemoveItem(item)" class="remove-button">Remove</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <button type="button" (click)="goBack()" class="back-button">Add More Items</button>
+      <button>Submit</button>
+    </div>
+  </form>
+</div>

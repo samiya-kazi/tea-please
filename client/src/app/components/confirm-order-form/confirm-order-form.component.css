@@ -1,4 +1,72 @@
 .order-item {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  align-items: center;
+  height: 80px;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: large;
+}
+
+h2 {
+  font-size:xx-large;
+  margin-bottom: 50px;
+}
+
+form {
+  margin: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form > div > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  padding: 15px;
+  background-color: brown;
+  color: white;
+  border: none;
+  font-size: large;
+  border-radius: 10px;
+  margin: 30px 0;
+  font-weight: bold;
+}
+
+.hide-button {
+  padding: 5px;
+  margin: 10px 0;
+  background-color: transparent;
+  border: none;
+  color: black;
+}
+
+input, select {
+  padding: 10px;
+  margin: 20px 5px;
+  width: 50%;
+}
+
+.back-button {
+  margin: 0 20px;
+  background-color: gray;
+}
+
+.order-items {
+  width: 100%;
+}
+
+.remove-button {
+  background-color: transparent;
+  color: maroon;
+  font-size: small;
 }
