@@ -1,3 +1,10 @@
+.kitchen-container {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  justify-content: center;
+}
+
 .example-container {
   width: 400px;
   max-width: 100%;
@@ -7,12 +14,14 @@
 }
 
 .example-list {
+  padding: 10px;
   border: solid 1px #ccc;
   min-height: 60px;
   background: white;
   border-radius: 4px;
   overflow: hidden;
   display: block;
+  background-color: lightgray;
 }
 
 .example-box {
