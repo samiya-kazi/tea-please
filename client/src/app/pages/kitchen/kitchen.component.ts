@@ -36,7 +36,10 @@ export class KitchenComponent implements OnInit {
 
     this.getAllOrders();
     this.orderSocket.joinRoom();
-    this.orderSocket.getNewOrder().subscribe(res => this.orders = [...this.orders, res]);
+    this.orderSocket.getNewOrder().subscribe(res => {
+      this.orders = [...this.orders, res]
+      this.notification.showInfo('New order added.', '')
+    });
   }
 
   getAllOrders () {
