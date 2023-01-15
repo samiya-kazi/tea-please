@@ -7,16 +7,18 @@ import { HomeComponent } from './pages/home/home.component';
 import { KitchenComponent } from './pages/kitchen/kitchen.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
-  { path: 'kitchen', component: KitchenComponent },
+  { path: 'kitchen', component: KitchenComponent, canActivate: [AuthGuard] },
   { path: 'order', component: HomeComponent, children: [
     { path: '', component: AddItemFormComponent },
     { path: 'cart', component: ConfirmOrderFormComponent },
     { path: 'log', component: OrderListComponent },
-  ]},
+  ],
+  canActivate: [AuthGuard]},
   { path: '**', redirectTo: '/order'}
 ];
 

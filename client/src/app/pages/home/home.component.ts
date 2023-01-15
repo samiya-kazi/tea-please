@@ -17,9 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     const userStr = localStorage.getItem('user');
-    if (!userStr) {
-      this.route.navigate(['login']);
-    } else {
+    if (userStr) {
       const user = JSON.parse(userStr);
       if (user.isAdmin) {
         this.route.navigate(['kitchen']);
